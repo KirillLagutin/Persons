@@ -402,3 +402,5 @@ FodyWeavers.xsd
 .idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/csharp
+
+Persons.Lib/connect_to_db.ini
