@@ -51,12 +51,13 @@ namespace Persons.Lib
         {
             _db.Open();
             _command.CommandText = @$"UPDATE tab_persons 
-                                        SET first_name = {person.FirstName}, 
-                                            last_name = {person.LastName}, 
+                                        SET first_name = '{person.FirstName}', 
+                                            last_name = '{person.LastName}', 
                                             age = {person.Age},
                                             is_delete = {person.IsDelete}
                                          WHERE id = {person.Id}";
             var result = _command.ExecuteNonQuery();
+            _db.Close();
             return result == 1;
         }
     }
