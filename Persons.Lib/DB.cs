@@ -8,10 +8,12 @@ namespace Persons.Lib
     public class DB
     {
         private MySqlConnection _db;
+        private MySqlCommand _command;
 
         public DB()
         {
             _db = new MySqlConnection(GetConnectionString());
+            _command = new MySqlCommand { Connection = _db };
         }
 
         private static string GetConnectionString()
@@ -25,12 +27,8 @@ namespace Persons.Lib
             var persons = new List<Person>();
             
             _db.Open();
-            var command = new MySqlCommand()
-            {
-                Connection = _db,
-                CommandText = "SELECT * FROM tab_persons"
-            };
-            var result = command.ExecuteReader();
+            _command.CommandText = "SELECT id, first_name, last_name, age, is_delete FROM tab_persons";
+            var result = _command.ExecuteReader();
             while (result.Read())
             {
                 var person = new Person
@@ -47,6 +45,19 @@ namespace Persons.Lib
             _db.Close();
 
             return persons;
+        }
+
+        public bool UpdatePerson(Person person)
+        {
+            _db.Open();
+            _command.CommandText = @$"UPDATE tab_persons 
+                                        SET first_name = {person.FirstName}, 
+                                            last_name = {person.LastName}, 
+                                            age = {person.Age},
+                                            is_delete = {person.IsDelete}
+                                         WHERE id = {person.Id}";
+            var result = _command.ExecuteNonQuery();
+            return result == 1;
         }
     }
 }
