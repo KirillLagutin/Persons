@@ -12,6 +12,10 @@ namespace Persons.ConsoleTest
             var db = new DB();
             var persons = db.GetAllPersons();
             ShowPersons(persons);
+
+            persons[0].Age = 35;
+            db.UpdatePerson(persons[0]);
+            ShowPersons(db.GetAllPersons());
         }
 
         private static void ShowPersons(List<Person> persons)
