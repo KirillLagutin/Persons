@@ -1,0 +1,63 @@
+﻿<Window x:Class="Persons.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Persons.App"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Список фамилий -->
+        <ListBox Grid.Column="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Path=LastName}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <!-- Подробная информация -->
+        <StackPanel Grid.Column="1">
+            <!-- Id -->
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Id" 
+                       Content="ID"/>
+                <TextBox x:Name="Input_Id" />
+            </StackPanel>
+            
+            <!-- FirstName -->
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_FirstName" 
+                       Content="Имя"/>
+                <TextBox x:Name="Input_FirstName" />
+            </StackPanel>
+            
+            <!-- LastName -->
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_LastName" 
+                       Content="Фамилия"/>
+                <TextBox x:Name="Input_LastName" />
+            </StackPanel>
+            
+            <!-- Age -->
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_Age" 
+                       Content="Возраст"/>
+                <TextBox x:Name="Input_Age" />
+            </StackPanel>
+            
+            <!-- IsDelete -->
+            <StackPanel Orientation="Horizontal">
+                <Label x:Name="Label_IsDelete" 
+                       Content="Удалён?"/>
+                <CheckBox x:Name="Input_IsDelete" />
+            </StackPanel>
+            
+        </StackPanel>
+    </Grid>
+</Window>
