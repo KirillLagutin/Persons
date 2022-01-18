@@ -19,7 +19,8 @@
         </Grid.ColumnDefinitions>
         
         <!-- Список фамилий -->
-        <ListBox Grid.Column="0">
+        <ListBox x:Name="ListOfPersons" Grid.Column="0"
+                 SelectionChanged="ListOfPersons_OnSelectionChanged">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Path=LastName}" 
@@ -77,6 +78,13 @@
                        Content="Удалён?"
                        Style="{StaticResource Style_Label}"/>
                 <CheckBox x:Name="Input_IsDelete" />
+            </StackPanel>
+            
+            <StackPanel>
+                <Button x:Name="Button_Save"
+                        Content="Save"
+                        Style="{StaticResource Style_ButtonSave}"
+                        Click="Button_Save_OnClick"/>
             </StackPanel>
             
         </StackPanel>
