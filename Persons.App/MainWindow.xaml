@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:Persons.App"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    
+    <Window.Resources>
+        <!-- Подключение внешних стиле -->
+        <ResourceDictionary Source="Styles.xaml"/>
+    </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -16,7 +22,8 @@
         <ListBox Grid.Column="0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Path=LastName}" />
+                    <TextBlock Text="{Binding Path=LastName}" 
+                               Style="{StaticResource Style_ListItem}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
@@ -24,37 +31,51 @@
         <!-- Подробная информация -->
         <StackPanel Grid.Column="1">
             <!-- Id -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource Style_StackPanel}">
                 <Label x:Name="Label_Id" 
-                       Content="ID"/>
-                <TextBox x:Name="Input_Id" />
+                       Content="ID"
+                       Style="{StaticResource Style_Label}"/>
+                <TextBox x:Name="Input_Id" 
+                         Style="{StaticResource Style_Input}"/>
             </StackPanel>
             
             <!-- FirstName -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource Style_StackPanel}">
                 <Label x:Name="Label_FirstName" 
-                       Content="Имя"/>
-                <TextBox x:Name="Input_FirstName" />
+                       Content="Имя"
+                       Style="{StaticResource Style_Label}"/>
+                <TextBox x:Name="Input_FirstName" 
+                         Style="{StaticResource Style_Input}"/>
             </StackPanel>
             
             <!-- LastName -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource Style_StackPanel}">
                 <Label x:Name="Label_LastName" 
-                       Content="Фамилия"/>
-                <TextBox x:Name="Input_LastName" />
+                       Content="Фамилия"
+                       Style="{StaticResource Style_Label}"/>
+                <TextBox x:Name="Input_LastName" 
+                         Style="{StaticResource Style_Input}"/>
             </StackPanel>
             
             <!-- Age -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource Style_StackPanel}">
                 <Label x:Name="Label_Age" 
-                       Content="Возраст"/>
-                <TextBox x:Name="Input_Age" />
+                       Content="Возраст"
+                       Style="{StaticResource Style_Label}"/>
+                <TextBox x:Name="Input_Age" 
+                         Style="{StaticResource Style_Input}"/>
             </StackPanel>
             
             <!-- IsDelete -->
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal"
+                        Style="{StaticResource Style_StackPanel}">
                 <Label x:Name="Label_IsDelete" 
-                       Content="Удалён?"/>
+                       Content="Удалён?"
+                       Style="{StaticResource Style_Label}"/>
                 <CheckBox x:Name="Input_IsDelete" />
             </StackPanel>
             
